@@ -34,11 +34,13 @@ export default function FileUpload() {
             let countmsg = 0;
             regexUsernameMsg.forEach((lines) => {
               let username = lines.substr(0, lines.indexOf(" "));
-              let message = lines.substr(lines.indexOf(" ") + 1);
+              //let message = lines.substr(lines.indexOf(" ") + 1);
+              let message = lines.split(" ").length - 1;
 
               if (username === names) {
-                countmsg += message.length;
-                //console.log(countmsg);
+                countmsg += message;
+                // console.log(countmsg);
+                console.log(message);
               }
             });
 
@@ -52,7 +54,7 @@ export default function FileUpload() {
           dict.forEach((data) => {
             processData.push(data.key + ": " + data.value + " words.");
           });
-          // console.log(processData);
+          console.log(processData);
 
           let items = [];
           for (let [index, value] of processData.entries()) {
